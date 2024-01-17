@@ -14,9 +14,11 @@ class Program
             numbers.Add(entry);
 
         } while (entry != 0);
+        
         int sum = numbers.Sum();
         double average = Queryable.Average(numbers.AsQueryable());
+        int largest = numbers.Max();
         
-        Console.Write("The sum is: {0}/nThe average is: {1}/nThe largest number is:{2}",sum,average,largest);
+        Console.Write("The sum is: {0}\nThe average is: {1}\nThe largest number is: {2}",sum,average,largest);
     }
 }
