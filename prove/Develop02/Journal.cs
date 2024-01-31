@@ -1,19 +1,20 @@
+using System.Collections.Generic;
+
 namespace Develop2;
 
-public class Journal
+public class Journal : IEnumerable<Entry>
 {
-    private List<Entry> entries = new List<Entry>();
+    private List<Entry> entries = new();
 
     public Journal()
     {
 
     }
 
-    Journal(string import)
+    public Journal(string import)
     {
 
     }
-
     public void Display()
     {
         if (entries.Count == 0)
@@ -27,9 +28,38 @@ public class Journal
             entry.Display();
         }
     }
-
-    public string Export()
+    public void SaveJournalToFile(string filename)
     {
-        return "";
+        Console.WriteLine($"Journal saved to file {filename}");
+    }
+    public void LoadJournalFromFile(string filename)
+    {
+        Console.WriteLine($"Journal loaded from file {filename}");
+        
+    }
+        public string[] ReadFile(string filename)
+    {
+        string[] lines = System.IO.File.ReadAllLines(filename);
+        return lines;
+    }
+    public void WriteFile(Journal journal, string filename)
+    {
+        using (StreamWriter outputFile = new(filename))
+        {
+            foreach(Entry entry in journal)
+            {
+                
+            }
+        }
+
+    }
+    public IEnumerator<Entry> GetEnumerator()
+    {
+        return entries.GetEnumerator();
+    }
+
+    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }

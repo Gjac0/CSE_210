@@ -21,15 +21,15 @@ class Program
                     break;
 
                 case 2:
-                    journal.DisplayJournal();
+                    journal.Display();
                     break;
 
                 case 3:
-                    journal.SaveJournalToFile();
+                    journal.SaveJournalToFile(GetFilename());
                     break;
 
                 case 4:
-                    journal.LoadJournalFromFile();
+                    journal.LoadJournalFromFile(GetFilename());
                     break;
 
                 case 5:
@@ -54,9 +54,11 @@ class Program
         DateTime date = DateTime.Today;
         return date;
     }
-    public string GetPrompt()
+    static string GetFilename()
     {
-        return "";
+        Console.Write("Please input the filename: ");
+        string filename = Console.ReadLine();
+        return filename;
     }
 
     public void Run()
