@@ -10,23 +10,24 @@ class Program
         Console.Clear();
         while (true)
         {
+            Console.WriteLine();
             ShowMenu();
-            Console.Write("Enter your choice (1-5): ", 1, 5);
+
             int choice = Int32.Parse(Console.ReadLine());
 
             switch (choice)
             {
                 case 1:
-                    Entry entry = new();
-                    journal.AddEntry(entry.WriteNewEntry(GetDate()));
+                    Entry entry = new Entry().WriteNewEntry();
+                    journal.AddEntry(entry);
                     break;
 
                 case 2:
-                    journal.Display();
+                    journal.DisplayJournal();
                     break;
 
                 case 3:
-                    journal.SaveJournalToFile(GetFilename());
+                    journal.SaveJournalToFile(journal,GetFilename());
                     break;
 
                 case 4:
@@ -49,10 +50,11 @@ class Program
         Console.WriteLine("3. Save the journal to a file");
         Console.WriteLine("4. Load the journal from a file");
         Console.WriteLine("5. Exit");
+        Console.Write("Enter your choice (1-5): ", 1, 5);
     }
-    static DateTime GetDate()
+    public static string GetDate()
     {
-        DateTime date = DateTime.Today;
+        string date = DateTime.Today.ToString();
         return date;
     }
     static string GetFilename()

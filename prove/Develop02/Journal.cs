@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 
 namespace Develop2;
 
@@ -11,15 +12,12 @@ public class Journal : IEnumerable<Entry>
 
     }
 
-    public Journal(string import)
-    {
-
-    }
     public void AddEntry(Entry entry)
     {
         entries.Add(entry);
     }
-    public void Display()
+
+    public void DisplayJournal()
     {
         Console.WriteLine();
         if (entries.Count == 0)
@@ -30,34 +28,45 @@ public class Journal : IEnumerable<Entry>
         
         foreach (Entry entry in entries)
         {
-            entry.Display();
+            entry.EntryToString().Split("|");
+            Console.WriteLine($"{entry.EntryToString().Split("|")[0]}\n{entry.EntryToString().Split("|")[1]}\n{entry.EntryToString().Split("|")[2]}");
+            
         }
+        Console.ReadLine();
     }
-    public void SaveJournalToFile(string filename)
-    {
-        Console.WriteLine($"Journal saved to file {filename}");
-    }
+
     public void LoadJournalFromFile(string filename)
     {
+        string[] lines = ReadFile(filename);
+        foreach (string line in lines)
+        {
+            Entry entry = new Entry().CreateEntryFromString(line);
+            AddEntry(entry);
+        }
         Console.WriteLine($"Journal loaded from file {filename}");
         
     }
-        public string[] ReadFile(string filename)
+
+    public string[] ReadFile(string filename)
     {
         string[] lines = System.IO.File.ReadAllLines(filename);
         return lines;
     }
-    public void WriteFile(Journal journal, string filename)
+
+    public void SaveJournalToFile(Journal journal,string filename)
     {
+        
         using (StreamWriter outputFile = new(filename))
         {
-            foreach(Entry entry in journal)
+            foreach (Entry entry in journal)
             {
-                
+                outputFile.WriteLine(entry.EntryToString());
             }
         }
+        Console.WriteLine($"Journal saved to file {filename}");
 
     }
+
     public IEnumerator<Entry> GetEnumerator()
     {
         return entries.GetEnumerator();

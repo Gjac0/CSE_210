@@ -5,40 +5,42 @@ namespace Develop2;
 
 public class Entry
 {
-    public string response;
-    public string prompt;
-    public DateTime date;
-    public List<string> prompts = new List<string>{
+    public string Response;
+    public string Prompt;
+    public string Date;
+    public List<string> Prompts = new()
+    {
     "Who was the most interesting person I interacted with today?",
     "What was the best part of my day?",
     "How did I see the hand of the Lord in my life today?",
     "What was the strongest emotion I felt today?",
-    "If I had one thing I could do over today, what would it be?"};
-    public Entry()
+    "If I had one thing I could do over today, what would it be?"
+    };
+
+    public Entry (string date,string prompt,string response)
     {
-        
-    }
-    public Entry (string response, DateTime date,string prompt)
-    {
-        this.date = date;
-        this.response = response;
-        this.prompt = prompt;
+        this.Date = date;
+        this.Response = response;
+        this.Prompt = prompt;
     }
     
-    public Entry(string import)
+    public static Entry CreateEntryFromString(string import)
     {
-        
+        string[] entryString = import.Split("|");
+        return new Entry(entryString[0],entryString[1],entryString[2]);
     }
-    public Entry WriteNewEntry(DateTime date)
+
+    public Entry WriteNewEntry(string date)
     {
-        prompt = prompts[new Random().Next(prompts.Count)];
-        Console.WriteLine(prompt);
-        response = Console.ReadLine();
-        Entry entry = new(response,date,prompt);
-        return entry;
+        Date = date; 
+        Prompt = Prompts[new Random().Next(Prompts.Count)];
+        Console.WriteLine(Prompt);
+        Response = Console.ReadLine();
+        return this;
     }
-    public void Display()
+    public string EntryToString()
     {
-        Console.WriteLine($"{date}\n{prompt}\n{response}");
+        return $"{Date}|{Prompt}|{Response}";
     }
 }
+    
