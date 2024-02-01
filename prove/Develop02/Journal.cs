@@ -15,8 +15,13 @@ public class Journal : IEnumerable<Entry>
     {
 
     }
+    public void AddEntry(Entry entry)
+    {
+        entries.Add(entry);
+    }
     public void Display()
     {
+        Console.WriteLine();
         if (entries.Count == 0)
         {
             Console.WriteLine("No entries found.");

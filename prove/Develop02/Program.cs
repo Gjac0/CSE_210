@@ -7,6 +7,7 @@ class Program
     {
         Journal journal = new Journal();
 
+        Console.Clear();
         while (true)
         {
             ShowMenu();
@@ -17,7 +18,7 @@ class Program
             {
                 case 1:
                     Entry entry = new();
-                    entry.WriteNewEntry(GetDate());
+                    journal.AddEntry(entry.WriteNewEntry(GetDate()));
                     break;
 
                 case 2:
@@ -60,12 +61,5 @@ class Program
         string filename = Console.ReadLine();
         return filename;
     }
-
-    public void Run()
-    {
-
-    }
-
-    
 }
 
