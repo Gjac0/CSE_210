@@ -28,19 +28,19 @@ public class Journal : IEnumerable<Entry>
         
         foreach (Entry entry in entries)
         {
-            entry.EntryToString().Split("|");
-            Console.WriteLine($"{entry.EntryToString().Split("|")[0]}\n{entry.EntryToString().Split("|")[1]}\n{entry.EntryToString().Split("|")[2]}");
+            string[] parts = entry.EntryToString().Split("|");
+            Console.WriteLine($"{parts[0]}\n{parts[1]}\n{parts[2]}");
             
         }
-        Console.ReadLine();
     }
 
     public void LoadJournalFromFile(string filename)
     {
         string[] lines = ReadFile(filename);
+
         foreach (string line in lines)
         {
-            Entry entry = new Entry().CreateEntryFromString(line);
+            Entry entry = Entry.CreateEntryFromString(line);
             AddEntry(entry);
         }
         Console.WriteLine($"Journal loaded from file {filename}");

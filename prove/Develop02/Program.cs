@@ -18,7 +18,7 @@ class Program
             switch (choice)
             {
                 case 1:
-                    Entry entry = new Entry().WriteNewEntry();
+                    Entry entry = Entry.EntryFromUserInput();
                     journal.AddEntry(entry);
                     break;
 
@@ -50,7 +50,7 @@ class Program
         Console.WriteLine("3. Save the journal to a file");
         Console.WriteLine("4. Load the journal from a file");
         Console.WriteLine("5. Exit");
-        Console.Write("Enter your choice (1-5): ", 1, 5);
+        Console.Write("Enter your choice (1-5): ");
     }
     public static string GetDate()
     {

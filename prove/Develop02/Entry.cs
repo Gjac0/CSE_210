@@ -8,7 +8,7 @@ public class Entry
     public string Response;
     public string Prompt;
     public string Date;
-    public List<string> Prompts = new()
+    public static List<string> Prompts = new()
     {
     "Who was the most interesting person I interacted with today?",
     "What was the best part of my day?",
@@ -30,13 +30,13 @@ public class Entry
         return new Entry(entryString[0],entryString[1],entryString[2]);
     }
 
-    public Entry WriteNewEntry(string date)
+    public static Entry EntryFromUserInput()
     {
-        Date = date; 
-        Prompt = Prompts[new Random().Next(Prompts.Count)];
-        Console.WriteLine(Prompt);
-        Response = Console.ReadLine();
-        return this;
+        string date = Program.GetDate(); 
+        string prompt = Prompts[new Random().Next(Prompts.Count)];
+        Console.WriteLine(prompt);
+        string response = Console.ReadLine();
+        return new Entry(date, prompt, response);
     }
     public string EntryToString()
     {
