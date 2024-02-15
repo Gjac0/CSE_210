@@ -4,7 +4,7 @@ namespace Develop3;
 public class Word
 {
     private string word{get;set;}
-    private bool hide{get;set;}
+    public bool hide{get;set;}
     public Word(string word)
     {
         this.word = word;
