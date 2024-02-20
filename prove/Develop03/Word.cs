@@ -1,36 +1,31 @@
-// using System.Runtime.CompilerServices;
-// namespace Develop3;
+namespace Develop3;
 
-// public class Word
-// {
-//     private string word;
-//     private bool hidden;
+public class Word
+{
+    private string word;
+    private bool hidden;
 
-//     public Word(string word)
-//     {
-//         this.word = word;
-//         hidden = false;
-//     }
+    public Word(string word)
+    {
+        this.word = word;
+        hidden = false;
+    }
+    public bool IsHidden()
+    {
+        return hidden;
+    }
+    
+    public void Hide()
+    {
+        hidden = true;
+    }
+    public string GetWord()
+    {
+        return word;
+    }
 
-//     public void HideWord()
-//     {
-//         hidden = true;
-//     }
-
-//     public bool CheckHide()
-//     {
-//         return hidden;
-//     }
-
-//     public void DisplayWord()
-//     {
-//         if (hidden)
-//         {
-//             Console.Write($"{new string('_', word.Length)} ");
-//         }
-//         else
-//         {
-//             Console.Write($"{word} ");
-//         }
-//     }
-// }
+    public string GetDisplayText()
+    {
+        return hidden ? new string('_', word.Length) : word;
+    }
+}

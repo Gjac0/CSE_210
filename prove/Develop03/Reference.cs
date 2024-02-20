@@ -1,23 +1,16 @@
-// namespace Develop3;
-//  public class Reference
-//     {
-//         public string Volume { get; private set; }
-//         public string Book { get; private set; }
-//         public string Chapter { get; private set; }
-//         public string Verse { get; private set; }
+namespace Develop3;
+public class Reference
+{
+    private string book;
+    private int chapter;
+    private int verseStart;
+    private int? verseEnd;
 
-//         public Reference(string volume, string book, string chapter, string verse)
-//         {
-//             Volume = volume;
-//             Book = book;
-//             Chapter = chapter;
-//             Verse = verse;
-//         }
-
-//         // Override ToString method for better readability
-//         public override string ToString()
-//         {
-//             return $"{Volume} {Book} {Chapter}:{Verse}";
-//         }
-//     }
-
+    public Reference(string book, int chapter, int verseStart, int? verseEnd = null)
+    {
+        this.book = book;
+        this.chapter = chapter;
+        this.verseStart = verseStart;
+        this.verseEnd = verseEnd;
+    }
+}
