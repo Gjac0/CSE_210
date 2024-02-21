@@ -50,9 +50,8 @@ public class Scripture
 
         public void HideRandomWord()
         {
-            Random rand = new Random();
             List<Word> wordsToHide = words.Where(word => !word.IsHidden()).ToList();
-            Word wordToHide = wordsToHide[rand.Next(wordsToHide.Count)];
+            Word wordToHide = wordsToHide[new Random().Next(wordsToHide.Count)];
             
             wordToHide.Hide();
             hiddenWords.Add(wordToHide.GetWord());
