@@ -32,18 +32,18 @@ public class BreathingActivity : Activity
             Thread.Sleep(1000);
             for (int j = 4; j>0;j--)
             {   
-                Console.Write($"\b\b \b\b{j}");
+                Console.Write($"\b{j}");
                 Thread.Sleep(1000); 
             }
         
-
-        Console.Write("\nBreathe Out..........5");
+        Console.Write("\nBreathe Out.........5");
         Thread.Sleep(1000);
             for (int j = 4; j>0;j--)
             {   
-                Console.Write($"\b\b \b\b\b{j}");
+                Console.Write($"\b{j}");
                 Thread.Sleep(1000); 
             }
+        Console.WriteLine("\n\n");
         }
     }
 }
