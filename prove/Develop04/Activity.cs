@@ -24,16 +24,16 @@ public class Activity
     protected void LoadingAnimation()
     {
         Console.WriteLine("Get Ready...");
+        List<char> chars =  new(){'/','-','\\','|'};
 
         for(int i = 0; i<3; i++)
         {
-            List<char> chars =  new(){'/','-','\\','|'};
             foreach (char c in chars)
             {
                 Console.Write("\b" + c);
                 Thread.Sleep(100);
             }
         }
-        Console.Write("\r \r\n");
+        Console.Write("\b \b\n");
     }
 }

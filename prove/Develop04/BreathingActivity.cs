@@ -35,6 +35,7 @@ public class BreathingActivity : Activity
                 Console.Write($"\b{j}");
                 Thread.Sleep(1000); 
             }
+            Console.Write("\b");
         
         Console.Write("\nBreathe Out.........5");
         Thread.Sleep(1000);
@@ -43,7 +44,8 @@ public class BreathingActivity : Activity
                 Console.Write($"\b{j}");
                 Thread.Sleep(1000); 
             }
-        Console.WriteLine("\n\n");
+            Console.Write("\b");
+            Console.Write("\n");
         }
     }
 }

@@ -4,7 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Menu();
+        while(true)
+        {
+            Menu();
+        }
     }
 
     static void Menu()
@@ -18,13 +21,14 @@ class Program
             case 1:
             BreathingActivity breathingActivity = new();
             breathingActivity.Breathe();
-                break;            
+            Menu();
+                break;
             case 2:
                 break;            
             case 3:
                 break;            
             case 4:
-                Environment.Exit(0);
+            Environment.Exit(0);
                 break;
         }
     }
