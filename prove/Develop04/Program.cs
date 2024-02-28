@@ -21,11 +21,14 @@ class Program
             case 1:
             BreathingActivity breathingActivity = new();
             breathingActivity.Breathe();
-            Menu();
                 break;
             case 2:
+            ReflectionActivity reflectionActivity = new();
+            reflectionActivity.Reflect();
                 break;            
             case 3:
+            // ListingActivity listingActivity = new();
+            // listingActivity.List();
                 break;            
             case 4:
             Environment.Exit(0);

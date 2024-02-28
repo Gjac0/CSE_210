@@ -14,6 +14,7 @@ public class Activity
         Console.Clear();
         Console.Write($"Welcome to the {ActivityName}.\n\n{Description}\n\nHow long, in seconds, would you like your session? ");
         Time = int.Parse(Console.ReadLine());
+        Console.Clear();
     }
 
     protected void EndingMessage()
@@ -24,16 +25,24 @@ public class Activity
     protected void LoadingAnimation()
     {
         Console.WriteLine("Get Ready...");
-        List<char> chars =  new(){'/','-','\\','|'};
-
         for(int i = 0; i<3; i++)
         {
+            PauseAnimation();
+        }
+        Console.Write("\n");
+    }
+    /// <summary>
+    ///  Shows a spinning line. Takes .5 seconds.
+    /// </summary>
+    protected void PauseAnimation()
+    {
+        List<char> chars =  new(){'/','-','\\','|'};
             foreach (char c in chars)
             {
                 Console.Write("\b" + c);
-                Thread.Sleep(100);
+                Thread.Sleep(125);
             }
-        }
-        Console.Write("\b \b\n");
+        Console.Write("\b \b");
     }
+
 }

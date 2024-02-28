@@ -15,16 +15,14 @@ public class BreathingActivity : Activity
     {
         IntroMessage();
 
-        Console.Clear();
         LoadingAnimation();
-
-        BreatheAnimation(Time);
+        BreatheAnimation();
 
         EndingMessage();
     }
-    static void BreatheAnimation(int time)
+    private void BreatheAnimation()
     {
-        int loops = time/10; 
+        int loops = Time/10; 
 
         for (int i = 0; i < loops; i++)
         {

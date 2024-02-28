@@ -29,6 +29,16 @@ public class ReflectionActivity : Activity
     }   
     public void Reflect()
     {
-        
+        IntroMessage();
+        Console.WriteLine(prompts[new Random().Next(prompts.Count)]);
+
+        int loops = Time/10;
+        for(int i = 0; i < loops; i++)
+        {
+            Console.WriteLine(questions[new Random().Next(questions.Count)]);
+            for (int j = 0; j < 20; j++) 
+                LoadingAnimation();
+        }
+        EndingMessage();
     }
 }
