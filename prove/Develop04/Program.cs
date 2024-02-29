@@ -16,19 +16,21 @@ class Program
         Console.WriteLine("Menu Options:\n\t1. Start breathing activity\n\t2. Start reflecting activity\n\t3. Start listing activity\n\t4. Quit");
         Console.Write("Select a choice from the menu: ");
         int choice = int.Parse(Console.ReadLine());
+
+
         switch(choice)
         {
             case 1:
-            BreathingActivity breathingActivity = new();
-            breathingActivity.Breathe();
+                new Activity().PauseAnimation(500);
+                new BreathingActivity().Breathe();
                 break;
             case 2:
-            ReflectionActivity reflectionActivity = new();
-            reflectionActivity.Reflect();
-                break;            
+                new Activity().PauseAnimation(500);
+                new ReflectionActivity().Reflect();
+                break;
             case 3:
-            // ListingActivity listingActivity = new();
-            // listingActivity.List();
+                new Activity().PauseAnimation(500);
+                // new ListingActivity().List(); 
                 break;            
             case 4:
             Environment.Exit(0);

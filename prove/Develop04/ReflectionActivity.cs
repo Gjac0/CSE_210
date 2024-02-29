@@ -30,14 +30,13 @@ public class ReflectionActivity : Activity
     public void Reflect()
     {
         IntroMessage();
-        Console.WriteLine(prompts[new Random().Next(prompts.Count)]);
+        Console.WriteLine($"{prompts[new Random().Next(prompts.Count)]}");
 
         int loops = Time/10;
         for(int i = 0; i < loops; i++)
-        {
-            Console.WriteLine(questions[new Random().Next(questions.Count)]);
-            for (int j = 0; j < 20; j++) 
-                LoadingAnimation();
+        { 
+            Console.WriteLine($"\n{questions[new Random().Next(questions.Count)]}");
+            PauseAnimation(10000);//Runs Animation for ten seconds
         }
         EndingMessage();
     }

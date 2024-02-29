@@ -5,7 +5,7 @@ public class Activity
     protected string ActivityName;  
     protected string Description;
     protected int Time;
-    protected Activity()
+    public Activity()
     {
     }
 
@@ -25,23 +25,23 @@ public class Activity
     protected void LoadingAnimation()
     {
         Console.WriteLine("Get Ready...");
-        for(int i = 0; i<3; i++)
-        {
-            PauseAnimation();
-        }
+        PauseAnimation(500);
         Console.Write("\n");
     }
     /// <summary>
-    ///  Shows a spinning line. Takes .5 seconds.
+    ///  Shows a spinning line for pauseTime miliseconds. Takes 500 miliseconds for one full.
     /// </summary>
-    protected void PauseAnimation()
+    public void PauseAnimation(float pauseTime)
     {
         List<char> chars =  new(){'/','-','\\','|'};
+        for(int i = 0; i < (pauseTime/500); i++)
+        {
             foreach (char c in chars)
             {
                 Console.Write("\b" + c);
                 Thread.Sleep(125);
             }
+        }
         Console.Write("\b \b");
     }
 
