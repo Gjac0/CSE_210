@@ -10,10 +10,7 @@ class Program
             new Rectangle("green",3,4),
             new Circle("blue",2)
         };
-        foreach (var shape in shapes)
-        {
-            Console.WriteLine(shape.GetArea());
-        }
+        foreach (var shape in shapes){Console.WriteLine(shape.GetArea());}
     }
 }
 public abstract class Shape
