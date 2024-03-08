@@ -2,14 +2,8 @@ namespace Develop04;
 
 public class ReflectionActivity : Activity
 {
-    List<string> prompts = new()
-    {    
-        "Think of a time when you stood up for someone else.",
-        "Think of a time when you did something really difficult.",
-        "Think of a time when you helped someone in need.",
-        "Think of a time when you did something truly selfless."
-    };
-    List<string> questions = new()
+
+    List<string> _questions = new()
     { 
         "Why was this experience meaningful to you?",
         "Have you ever done anything like this before?",
@@ -24,20 +18,27 @@ public class ReflectionActivity : Activity
 
     public ReflectionActivity():base()
     {
-        ActivityName = "Reflection Activity";
-        Description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
-    }   
+        _activityName = "Reflection Activity";
+        _description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
+        _prompts = new List<string>{"Think of a time when you stood up for someone else.",
+        "Think of a time when you did something really difficult.",
+        "Think of a time when you helped someone in need.",
+        "Think of a time when you did something truly selfless."};  
+    }
     public void Reflect()
     {
         IntroMessage();
-        Console.WriteLine($"{prompts[new Random().Next(prompts.Count)]}");
+        Console.WriteLine($"{_prompts[new Random().Next(_prompts.Count)]}");
 
-        int loops = Time/10;
+        int loops = _time/10;
         for(int i = 0; i < loops; i++)
         { 
-            Console.WriteLine($"\n{questions[new Random().Next(questions.Count)]}");
+            Console.Write($"\n{_questions[new Random().Next(_questions.Count)]}");
             PauseAnimation(10000);//Runs Animation for ten seconds
         }
+
         EndingMessage();
+        PauseAnimation(4000);
+
     }
 }

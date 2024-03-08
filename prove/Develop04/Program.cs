@@ -17,20 +17,16 @@ class Program
         Console.Write("Select a choice from the menu: ");
         int choice = int.Parse(Console.ReadLine());
 
-
         switch(choice)
         {
             case 1:
-                new Activity().PauseAnimation(500);
                 new BreathingActivity().Breathe();
                 break;
             case 2:
-                new Activity().PauseAnimation(500);
                 new ReflectionActivity().Reflect();
                 break;
             case 3:
-                new Activity().PauseAnimation(500);
-                // new ListingActivity().List(); 
+                new ListingActivity().Listing(); 
                 break;            
             case 4:
             Environment.Exit(0);
