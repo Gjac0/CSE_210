@@ -4,9 +4,9 @@ public class SimpleGoal : Goal
 {
     public SimpleGoal()
     {
-        
+
     }
-    public SimpleGoal(string goalDescription,string goalTitle,int points, bool complete):base(goalDescription,goalTitle,points)
+    public SimpleGoal(string goalTitle,string goalDescription,int points, bool complete):base(goalDescription,goalTitle,points)
     {
         _complete = complete;
     }
@@ -14,4 +14,5 @@ public class SimpleGoal : Goal
     {
         return base.CreateNewGoal();
     }
+
 }

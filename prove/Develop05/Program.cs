@@ -3,26 +3,24 @@ using System.Security.Cryptography.X509Certificates;
 namespace Develop05;
 class Program
 {
-    static List<Goal> goals;
+    private static List<Goal> goals = new();
     static int pointTotal = 0;
     static void GetGoalType()
     {
-        Console.Write("   What kind of goal do you want to add?\n      1. Simple\n      2. Eternal\n      3. Checklist");
+        Console.WriteLine("   What kind of goal do you want to add?\n      1. Simple\n      2. Eternal\n      3. Checklist");
         switch(int.Parse(Console.ReadLine()))
         {
             case 1:
-                var (goalTitle, goalDescription, points, complete) = new SimpleGoal().CreateNewGoal();
-                goals.Add(new SimpleGoal(goalTitle, goalDescription, points, complete));
+                var (simpleGoalTitle, simpleGoalDescription, simplePoints, simpleComplete) = new SimpleGoal().CreateNewGoal();
+                goals.Add(new SimpleGoal(simpleGoalTitle, simpleGoalDescription, simplePoints, simpleComplete));
             break;
             case 2:
-                // var (goalTitle, goalDescription, points) = new EternalGoal().CreateNewGoal();
-                // EternalGoal goal = new(goalTitle, goalDescription, points);
-                // goals.Add(goal);
+                var (eternalGoalTitle, eternalGoalDescription, eternalPoints, _) = new EternalGoal().CreateNewGoal();
+                goals.Add(new EternalGoal(eternalGoalTitle, eternalGoalDescription, eternalPoints));
             break;            
             case 3:
-                // var (goalTitle, goalDescription, points, complete) = new ChecklistGoal().CreateNewGoal();
-                // ChecklistGoal goal = new(goalTitle, goalDescription, points, complete);
-                // goals.Add(goal);
+                var (goalTitle, goalDescription, points, complete) = new ChecklistGoal().CreateNewGoal();
+                goals.Add(new ChecklistGoal(goalTitle, goalDescription, points, complete));
             break;        
         }
     }
@@ -33,6 +31,7 @@ class Program
     }
     static void Main(string[] args)
     {
+        
         while (true)
         {
             switch(Menu())
@@ -42,7 +41,10 @@ class Program
                 break;
 
                 case 2:
-                // ListGoals();
+                    foreach (Goal goal in goals)
+                    {
+                        goal.DisplayGoal();
+                    }
                 break;
 
                 case 3:

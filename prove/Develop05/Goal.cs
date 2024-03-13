@@ -22,12 +22,12 @@ public class Goal
     public virtual (string,string,int,bool) CreateNewGoal()
     {
         Console.Write("\nWhat is the name of your goal? ");
-        _goalTitle = Console.ReadLine();
-        Console.Write("\nWhat is a short description of it? ");
-        _goalDescription = Console.ReadLine();
-        Console.Write("\nHow many points is this goal worth? ");
-        _points = int.Parse(Console.ReadLine());
-        return (_goalTitle,_goalDescription,_points,false);
+        string goalTitle = Console.ReadLine();
+        Console.Write("What is a short description of it? ");
+        string goalDescription = Console.ReadLine();
+        Console.Write("How many points is this goal worth? ");
+        int points = int.Parse(Console.ReadLine());
+        return (goalTitle,goalDescription,points,false);
     }
     protected virtual void ExportToFile()
     {
@@ -50,9 +50,9 @@ public class Goal
         };
         return goal;
     }
-    protected virtual void DisplayGoal()
+    public virtual void DisplayGoal()
     {
-        Console.WriteLine($"[ ] {_goalTitle} ({_goalDescription})");
+        Console.WriteLine($"[{(_complete ? " ":"✓")}] {_goalTitle} ({_goalDescription})");
     }
     protected virtual void CompleteGoal()
     {
