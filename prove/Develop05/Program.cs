@@ -12,8 +12,7 @@ class Program
         {
             case 1:
                 var (goalTitle, goalDescription, points, complete) = new SimpleGoal().CreateNewGoal();
-                SimpleGoal goal = new(goalTitle, goalDescription, points, complete);
-                goals.Add(goal);
+                goals.Add(new SimpleGoal(goalTitle, goalDescription, points, complete));
             break;
             case 2:
                 // var (goalTitle, goalDescription, points) = new EternalGoal().CreateNewGoal();

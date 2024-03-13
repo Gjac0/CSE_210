@@ -11,7 +11,7 @@ public class Goal
     string DELIMETER = "`~`";
     public Goal()
     {
-        
+
     }
     public Goal(string goalTitle,string goalDescription, int points)
     {
@@ -27,9 +27,7 @@ public class Goal
         _goalDescription = Console.ReadLine();
         Console.Write("\nHow many points is this goal worth? ");
         _points = int.Parse(Console.ReadLine());
-        _complete = false;
-        return (_goalTitle,_goalDescription,_points,_complete);
-        
+        return (_goalTitle,_goalDescription,_points,false);
     }
     protected virtual void ExportToFile()
     {
