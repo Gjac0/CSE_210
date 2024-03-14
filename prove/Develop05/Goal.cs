@@ -4,11 +4,11 @@ namespace Develop05;
 
 public class Goal
 {
+    protected string _classTitle = "Goal";
     protected string _goalTitle;
     protected string _goalDescription;
     protected int _points;
     protected bool _complete;
-    string DELIMETER = "`~`";
     public Goal()
     {
 
@@ -29,30 +29,22 @@ public class Goal
         int points = int.Parse(Console.ReadLine());
         return (goalTitle,goalDescription,points,false);
     }
-    protected virtual void ExportToFile()
+    public virtual void ExportToFile(string fileName,string DELIMITER)
     {
-        Console.Write("What is the name of the file? ");
-        string fileName = Console.ReadLine();
-        using StreamWriter outputFile = new(fileName);
-        outputFile.WriteLine(_goalTitle, DELIMETER, _goalDescription, DELIMETER, _points, DELIMETER, _complete);
-
+        new StreamWriter(fileName).WriteLine($"{_classTitle}{DELIMITER}{_goalTitle}{DELIMITER}{_goalDescription}{DELIMITER}{_points}{DELIMITER}{_complete}");
     }
-    protected virtual Goal CreateFromString(string line)
+    public virtual Goal CreateFromString(string line, string DELIMITER)
     {
-        string[] parts = line.Split(DELIMETER);
-        string goalTitle = parts[0];
-        string goalDescription = parts[1];
-        int points = int.Parse(parts[2]);
-        bool complete = bool.Parse(parts[3]);
-        Goal goal = new(goalTitle, goalDescription, points)
-        {
-            _complete = complete
-        };
-        return goal;
+        string[] parts = line.Split(DELIMITER);
+        string goalTitle = parts[1];
+        string goalDescription = parts[2];
+        int points = int.Parse(parts[3]);
+        bool complete = bool.Parse(parts[4]);
+        return new Goal(goalTitle, goalDescription, points){_complete = complete};
     }
     public virtual void DisplayGoal()
     {
-        Console.WriteLine($"[{(_complete ? " ":"✓")}] {_goalTitle} ({_goalDescription})");
+        Console.WriteLine($"[{(_complete ? "✓":" ")}] {_goalTitle} ({_goalDescription})");
     }
     protected virtual void CompleteGoal()
     {

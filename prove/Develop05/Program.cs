@@ -1,13 +1,16 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 namespace Develop05;
 class Program
 {
     private static List<Goal> goals = new();
-    static int pointTotal = 0;
+    private static int pointTotal = 0;
+    private static string DELIMITER = "~~";
     static void GetGoalType()
     {
-        Console.WriteLine("   What kind of goal do you want to add?\n      1. Simple\n      2. Eternal\n      3. Checklist");
+        Console.Write("   1. Simple\n   2. Eternal\n   " +
+        "3. Checklist\nWhat kind of goal do you want to add? ");
         switch(int.Parse(Console.ReadLine()))
         {
             case 1:
@@ -20,18 +23,20 @@ class Program
             break;            
             case 3:
                 var (goalTitle, goalDescription, points, complete) = new ChecklistGoal().CreateNewGoal();
-                goals.Add(new ChecklistGoal(goalTitle, goalDescription, points, complete));
+                goals.Add(new ChecklistGoal(goalTitle, goalDescription, points, complete){});
             break;        
         }
     }
     static int Menu()
     {
-        Console.Write($"\nYou have {pointTotal} points.\nMenu Options: \n   1. Create New Goal\n   2. List Goals\n   4. Load Goals\n   5. Record Event\n   6. Quit\n Select a choice from the menu: ");
+        Console.Write($"\nYou have {pointTotal} points.\nMenu Options: \n   1. Create New Goal" +
+        "\n   2. List Goals\n   3. Save Goals\n   4. Load Goals\n   5. Record Event\n" +
+        "   6. Quit\nSelect a choice from the menu: ");
         return int.Parse(Console.ReadLine());
     }
     static void Main(string[] args)
     {
-        
+        Console.Clear();
         while (true)
         {
             switch(Menu())
@@ -48,11 +53,36 @@ class Program
                 break;
 
                 case 3:
-                // SaveToFile();
+                    Console.Write("What is the name of the file? ");
+                    string fileName = Console.ReadLine();
+                    foreach(Goal goal in goals)
+                    {
+                        goal.ExportToFile(fileName,DELIMITER);
+                    }
                 break;
 
                 case 4:
-                //  LoadFromFile();
+                    Console.Write("What is the name of the file? ");
+                    fileName = Console.ReadLine();
+                    string[] lines = System.IO.File.ReadAllLines(fileName);
+
+                    foreach (string line in lines)
+                    {
+
+                        if (line.Split(DELIMITER)[0] == "SimpleGoal")
+                        {
+                            goals.Add(new SimpleGoal().CreateFromString(line,DELIMITER));
+                        }
+                        else if (line.Split(DELIMITER)[0] == "EternalGoal")
+                        {
+                            goals.Add(new EternalGoal().CreateFromString(line,DELIMITER));
+                        }
+                        else if (line.Split(DELIMITER)[0] == "ChecklistGoal")
+                        {
+                            goals.Add(new ChecklistGoal().CreateFromString(line,DELIMITER));
+                        }
+
+                    }                
                 break;
 
                 case 5:
