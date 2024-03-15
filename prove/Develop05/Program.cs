@@ -86,7 +86,14 @@ class Program
                 break;
 
                 case 5:
-                // RecordEvent();
+                        for (int i = 0; i < goals.Count; i++)
+                        {
+                            Console.Write($"{i+1} ");
+                            goals[i].DisplayGoalTitle();
+                        }
+                        Console.Write("Which goal did you accomplish? ");
+                        int choice  = int.Parse(Console.ReadLine());
+                        goals[choice-1].CompleteGoal();
                 break;
 
                 case 6:

@@ -46,7 +46,11 @@ public class Goal
     {
         Console.WriteLine($"[{(_complete ? "✓":" ")}] {_goalTitle} ({_goalDescription})");
     }
-    protected virtual void CompleteGoal()
+    public void DisplayGoalTitle()
+    {
+        Console.WriteLine(_goalTitle);
+    }
+    public virtual void CompleteGoal()
     {
         _complete = true;
     }
