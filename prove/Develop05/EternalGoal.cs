@@ -27,4 +27,8 @@ public class EternalGoal : Goal
         int points = int.Parse(parts[3]);
         return new EternalGoal(goalTitle, goalDescription, points);
     }
+    public override int CompleteGoal()
+    {
+        return _points;
+    }
 }

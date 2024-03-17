@@ -13,7 +13,7 @@ public class ChecklistGoal : Goal
     {
         _classTitle = "ChecklistGoal";        
         _complete = complete;
-        Console.Write("How many times does this goal need to be accomplished fora bonus? ");
+        Console.Write("How many times does this goal need to be accomplished for a bonus? ");
         _completionTarget = int.Parse(Console.ReadLine());
         Console.Write("What is the bonus for accomplishing it that many times? ");
         _bonus = int.Parse(Console.ReadLine());
@@ -21,7 +21,7 @@ public class ChecklistGoal : Goal
     public override void DisplayGoal()
     {
         Console.WriteLine($"[{(_complete ? "✓":" ")}] {_goalTitle} ({_goalDescription})"+
-        $" -- Currently completed: {_completionTarget}/{_timesCompleted}");
+        $" -- Currently completed: {_timesCompleted}/{_completionTarget}");
     }
     public override (string, string, int, bool) CreateNewGoal()
     {
@@ -35,13 +35,26 @@ public class ChecklistGoal : Goal
     public override ChecklistGoal CreateFromString(string line, string DELIMITER)
     {
         string[] parts = line.Split(DELIMITER);
-        string goalTitle = parts[1];
-        string goalDescription = parts[2];
-        int points = int.Parse(parts[3]);
-        bool complete = bool.Parse(parts[4]);
-        int timesCompleted = int.Parse(parts[5]);
-        int completionTarget = int.Parse(parts[6]);
-        int bonus = int.Parse(parts[7]);
-        return new ChecklistGoal(goalTitle, goalDescription, points, complete){_completionTarget = completionTarget, _timesCompleted = timesCompleted, _bonus = bonus};
+        return new ChecklistGoal()
+        {_goalTitle = parts[1],
+         _goalDescription = parts[2],
+        _points = int.Parse(parts[3]),
+        _complete = bool.Parse(parts[4]),
+        _completionTarget = int.Parse(parts[5]),
+        _timesCompleted = int.Parse(parts[6]),
+        _bonus = int.Parse(parts[7])
+        };
+    }
+    public override int CompleteGoal()
+    {
+        _timesCompleted ++;
+        if (_completionTarget == _timesCompleted)
+        {
+            return base.CompleteGoal() + _bonus;
+        }
+        else
+        {
+            return _points;
+        }
     }
 }

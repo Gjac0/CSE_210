@@ -50,9 +50,10 @@ public class Goal
     {
         Console.WriteLine(_goalTitle);
     }
-    public virtual void CompleteGoal()
+    public virtual int CompleteGoal()
     {
         _complete = true;
+        return _points;
     }
     protected static string GetFilename()
     {
