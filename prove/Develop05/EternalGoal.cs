@@ -14,10 +14,9 @@ public class EternalGoal : Goal
     {
         return base.CreateNewGoal();
     }
-    public override void ExportToFile(string fileName, string DELIMITER)
+    public override void ExportToFile(StreamWriter fileName, string DELIMITER)
     {
-        using StreamWriter outputFile = new(fileName);
-        outputFile.WriteLine($"{_classTitle}{DELIMITER}{_goalTitle}{DELIMITER}{_goalDescription}{DELIMITER}{_points}");        
+        fileName.WriteLine($"{_classTitle}{DELIMITER}{_goalTitle}{DELIMITER}{_goalDescription}{DELIMITER}{_points}");        
     }
     public override EternalGoal CreateFromString(string line, string DELIMITER)
     {

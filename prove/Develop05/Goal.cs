@@ -29,9 +29,14 @@ public class Goal
         int points = int.Parse(Console.ReadLine());
         return (goalTitle,goalDescription,points,false);
     }
-    public virtual void ExportToFile(string fileName,string DELIMITER)
+    /// <summary>
+    /// Writes _classTitle,_goalTitle,_goalDescription,_points,_complete
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <param name="DELIMITER"></param>
+    public virtual void ExportToFile(StreamWriter fileName,string DELIMITER)
     {
-        new StreamWriter(fileName).WriteLine($"{_classTitle}{DELIMITER}{_goalTitle}{DELIMITER}{_goalDescription}{DELIMITER}{_points}{DELIMITER}{_complete}");
+        fileName.WriteLine($"{_classTitle}{DELIMITER}{_goalTitle}{DELIMITER}{_goalDescription}{DELIMITER}{_points}{DELIMITER}{_complete}");
     }
     public virtual Goal CreateFromString(string line, string DELIMITER)
     {

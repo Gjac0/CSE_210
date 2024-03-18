@@ -54,12 +54,14 @@ class Program
                 case 3:
                     Console.Write("What is the name of the file? ");
                     string fileName = Console.ReadLine();
-                    foreach(Goal goal in goals)
+                    using (StreamWriter outputFile = new StreamWriter(fileName, append: true))
                     {
-                        goal.ExportToFile(fileName,DELIMITER);
+                        foreach (Goal goal in goals)
+                        {
+                            goal.ExportToFile(outputFile, DELIMITER);
+                        }
                     }
                 break;
-
                 case 4:
                     Console.Write("What is the name of the file? ");
                     fileName = Console.ReadLine();

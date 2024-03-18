@@ -15,11 +15,7 @@ public class SimpleGoal : Goal
     {
         return base.CreateNewGoal();
     }
-    public override void ExportToFile(string fileName, string DELIMITER)
-    {
-        using StreamWriter outputFile = new(fileName);
-        outputFile.WriteLine($"{_classTitle}{DELIMITER}{_goalTitle}{DELIMITER}{_goalDescription}{DELIMITER}{_points}{DELIMITER}{_complete}");        
-    }
+
     public override SimpleGoal CreateFromString(string line, string DELIMITER)
     {
         Console.WriteLine(line);
