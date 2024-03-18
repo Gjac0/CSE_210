@@ -30,4 +30,8 @@ public class EternalGoal : Goal
     {
         return _points;
     }
+    public override void DisplayGoal()
+    {
+        base.DisplayGoal();
+    }
 }

@@ -57,10 +57,19 @@ public class Goal
     }
     public virtual int CompleteGoal()
     {
-        _complete = true;
-        return _points;
+        if(!_complete)
+        {
+            _complete = true;
+            return _points;
+        }
+        else
+        {
+            Console.WriteLine("Goal already complete");
+            return 0;
+        }
+
     }
-    protected static string GetFilename()
+    public static string GetFilename()
     {
         Console.Write("What is the name of the file? ");
         return Console.ReadLine();

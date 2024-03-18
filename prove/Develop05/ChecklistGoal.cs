@@ -39,14 +39,17 @@ public class ChecklistGoal : Goal
          _goalDescription = parts[2],
         _points = int.Parse(parts[3]),
         _complete = bool.Parse(parts[4]),
-        _completionTarget = int.Parse(parts[5]),
-        _timesCompleted = int.Parse(parts[6]),
+        _timesCompleted = int.Parse(parts[5]),
+        _completionTarget = int.Parse(parts[6]),
         _bonus = int.Parse(parts[7])
         };
     }
     public override int CompleteGoal()
     {
-        _timesCompleted ++;
+        if(!_complete)
+        {
+            _timesCompleted ++;
+        }
         if (_completionTarget == _timesCompleted)
         {
             return base.CompleteGoal() + _bonus;

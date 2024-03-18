@@ -1,5 +1,3 @@
-SimpleGoal~~f~~f~~1~~False
-SimpleGoal~~g~~g~~2~~False
-SimpleGoal~~f~~f~~1~~False
-SimpleGoal~~g~~g~~2~~False
-ChecklistGoal~~b~~b~~100~~False~~0~~2~~10
+SimpleGoal~~simple~~simple~~1~~True
+EternalGoal~~eternal~~eternal~~10
+ChecklistGoal~~checklist~~checklist~~100~~True~~3~~3~~1000

@@ -63,9 +63,7 @@ class Program
                     }
                 break;
                 case 4:
-                    Console.Write("What is the name of the file? ");
-                    fileName = Console.ReadLine();
-                    string[] lines = System.IO.File.ReadAllLines(fileName);
+                    string[] lines = System.IO.File.ReadAllLines(Goal.GetFilename());
 
                     foreach (string line in lines)
                     {
