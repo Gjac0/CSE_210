@@ -43,7 +43,7 @@ public class ChecklistGoal : Goal
         _completionTarget = int.Parse(parts[6]),
         _bonus = int.Parse(parts[7])
         };
-    }
+    }//bruh moment
     public override int CompleteGoal()
     {
         if(!_complete)
