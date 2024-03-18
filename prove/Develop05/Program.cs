@@ -54,7 +54,7 @@ class Program
                 case 3:
                     Console.Write("What is the name of the file? ");
                     string fileName = Console.ReadLine();
-                    using (StreamWriter outputFile = new StreamWriter(fileName, append: true))
+                    using (StreamWriter outputFile = new StreamWriter(fileName))
                     {
                         foreach (Goal goal in goals)
                         {

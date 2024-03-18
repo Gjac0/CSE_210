@@ -29,7 +29,7 @@ public class ChecklistGoal : Goal
     }
     public override void ExportToFile(StreamWriter fileName, string DELIMITER)
     {
-        fileName.WriteLine($"{DELIMITER}{_timesCompleted}{DELIMITER}{_completionTarget}{DELIMITER}{_bonus}");
+        fileName.WriteLine($"{_classTitle}{DELIMITER}{_goalTitle}{DELIMITER}{_goalDescription}{DELIMITER}{_points}{DELIMITER}{_complete}{DELIMITER}{_timesCompleted}{DELIMITER}{_completionTarget}{DELIMITER}{_bonus}");
     }
     public override ChecklistGoal CreateFromString(string line, string DELIMITER)
     {
