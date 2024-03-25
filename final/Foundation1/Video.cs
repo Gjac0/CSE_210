@@ -1,13 +1,14 @@
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Foundation1;
-
 public class Video
 {
     private string _title;
     private string _author;
     private int _time;
     private Comment[] _comments;
+    [SuppressMessage("Usage", "CS0649:Field is never assigned to, and will always have its default value", Justification = "Assigned in the constructor.")]
     public Video (string title,string author, int time, Comment[] comments)
     {
         _title = title;
