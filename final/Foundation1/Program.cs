@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 namespace Foundation1;
 class Program
 {
-    static List<Video> videos = new List<Video>();
+    static List<Video> videos = new();
     static void Main(string[] args)
     {
     

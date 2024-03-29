@@ -11,9 +11,9 @@ public class Order
         _products = products;
         _customer = customer;
     }
-    public float CalculateTotalCost()
+    public double CalculateTotalCost()
     {
-        float total = 5;
+        double total = 5;
         foreach(Product product in _products)
         {
             total += product.Price();

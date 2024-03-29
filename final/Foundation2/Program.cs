@@ -6,9 +6,9 @@ class Program
     protected static List<Order> orders = new();
     static void Main(string[] args)
     {         
-        Product product1 = new Product("Widget", "W123", 10.37f, 2);
-        Product product2 = new Product("Gadget", "G456", 15.48f, 3);
-        Product product3 = new Product("Thingamajig", "T789", 8.99f, 1);
+        Product product1 = new Product("Widget", "W123", 10.37, 2);
+        Product product2 = new Product("Gadget", "G456", 15.48, 3);
+        Product product3 = new Product("Thingamajig", "T789", 8.99, 1);
 
         orders.Add(new Order(new List<Product> { product1, product2 },new Customer("John Doe", new Address("123 Main St", "Anytown", "CA", "USA"))));
         Console.WriteLine($"Added{orders}");
@@ -17,9 +17,7 @@ class Program
 
         foreach(Order order in orders)
         {
-            Console.WriteLine(order.PackingLabel() + order.ShippingLabel() + $"{order.CalculateTotalCost()}" + "\n");
+            Console.WriteLine($"\n{order.PackingLabel()}{order.ShippingLabel()}${order.CalculateTotalCost()}");
         }
     }
-    
-    
 }
