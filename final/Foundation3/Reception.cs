@@ -11,6 +11,6 @@ public class Reception : Event
     public override void FullDetails()
     {
         base.FullDetails();
-        Console.Write(_rsvpEmail + "\n");
+        Console.WriteLine($"RSVP: {_rsvpEmail}");
     }
 }

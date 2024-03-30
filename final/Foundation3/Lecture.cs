@@ -13,6 +13,6 @@ public class Lecture : Event
     public override void FullDetails()
     {
         base.FullDetails();
-        Console.Write($"{_speaker}\n{_capacity}");
+        Console.WriteLine($"Speaker: {_speaker}\nCapacity: {_capacity}");
     }
 }
