@@ -1,5 +1,4 @@
 namespace Foundation03;
-
 public class Reception : Event
 {
     private string _rsvpEmail;

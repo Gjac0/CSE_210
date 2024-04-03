@@ -1,5 +1,4 @@
 namespace Foundation03;
-
 public class Lecture : Event
 {
     private string _speaker;
