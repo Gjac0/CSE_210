@@ -20,14 +20,14 @@ public class Event
     }
     public void StandardDetails()
     {
-        Console.WriteLine($"Title: {_eventTitle}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.ReturnAddress()}");
+        Console.WriteLine($"\nTitle: {_eventTitle}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.ReturnAddress()}");
     }
     public virtual void FullDetails()
     {
         StandardDetails();
     } 
-    protected void ShortDescrioption()
+    public void ShortDescription()
     {
-        Console.WriteLine($"{_eventType}\n{_eventTitle}\n{_date}");
+        Console.WriteLine($"\nEvent Type: {_eventType}\nTilte: {_eventTitle}\nDate: {_date}");
     }
 }

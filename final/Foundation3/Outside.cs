@@ -11,6 +11,6 @@ public class Outdoor : Event
     public override void FullDetails()
     {
         base.FullDetails();
-        Console.Write(_forecast + "\n");
+        Console.WriteLine($"Forecast: {_forecast}");
     }
 }
