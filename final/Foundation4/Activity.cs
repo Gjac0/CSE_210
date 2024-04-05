@@ -25,6 +25,6 @@ public abstract class  Activity
     }
     public virtual string GetSummary()
     {
-        return $"{_date} {GetType().Name} ({_length} min)- ";
+        return $"{_date} {GetType().Name:0.0} ({_length} min)- ";
     }
 }

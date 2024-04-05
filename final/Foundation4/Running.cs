@@ -21,6 +21,6 @@ public class Running : Activity
     }
     public override string GetSummary()
     {
-        return base.GetSummary() + $"Distance: {_distance} miles, Speed: {GetSpeed()} mph, Pace: {GetPace()} min per mile";
+        return base.GetSummary() + $"Distance: {_distance:0.0} miles, Speed: {GetSpeed():0.0} mph, Pace: {GetPace():0.0} min per mile";
     }
 }
