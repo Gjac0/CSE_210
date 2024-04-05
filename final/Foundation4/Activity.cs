@@ -5,29 +5,26 @@ public abstract class  Activity
 {
     protected string _date;
     protected double _length;
-    protected Activity(string date, double length)
+    public Activity(string date, double length)
     {
         _date = date;
         _length = length;
     }
 
-    protected virtual double GetDistance
-    
-    ()
+    public virtual double GetDistance()
     {
-
-        return 1.0;
+        return 0;
     }
-    protected virtual double GetSpeed()
+    public virtual double GetSpeed()
     {
-        return 1.0;
+        return 0;
     }
-    protected virtual double GetPace()
+    public virtual double GetPace()
     {
-        return 1.0;
+        return 0;
     }
-    protected virtual void GetSummary()
+    public virtual string GetSummary()
     {
-
+        return $"{_date} {GetType().Name} ({_length} min)- ";
     }
 }
